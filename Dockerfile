@@ -144,7 +144,7 @@ RUN IMPORT_CONFIG_URL="${PGCONFIG_URL}? \
       echo $'ALTER SYSTEM SET logging_collector TO \'off\';\n'; \
     ) | sudo -u postgres psql -e && \
     service postgresql stop
-RUN echo 147
+
 # Initial import
 USER root
 ARG OSM2PGSQL_CACHE=24000
@@ -155,7 +155,7 @@ RUN service postgresql start && \
       --threads ${BUILD_THREADS} \
       --osm2pgsql-cache ${OSM2PGSQL_CACHE} && \
     service postgresql stop
-RUN echo 158
+
 # Use safe postgresql configuration
 USER root
 ARG RUNTIME_THREADS=2
@@ -175,7 +175,7 @@ RUN IMPORT_CONFIG_URL="${PGCONFIG_URL}? \
       echo $'ALTER SYSTEM SET logging_collector TO \'on\';\n'; \
     ) | sudo -u postgres psql -e && \
     service postgresql stop
-RUN echo 178
+
 # Configure Apache
 USER root
 COPY nominatim.conf /etc/apache2/conf-available/nominatim.conf
