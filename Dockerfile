@@ -28,7 +28,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt xenial-pgdg main" >> \
 RUN apt-get -qq update
 
 # Set build variables
-ARG PGSQL_VERSION=9.6
+ARG PGSQL_VERSION=10
 ARG POSTGIS_VERSION=2.4
 
 # Install build dependencies
@@ -60,6 +60,7 @@ RUN apt-get install -y --no-install-recommends \
       php-intl \
       php-pear \
       php-pgsql \
+      binutils \
       postgresql-${PGSQL_VERSION}-postgis-${POSTGIS_VERSION} \
       postgresql-${PGSQL_VERSION}-postgis-scripts \
       postgresql-contrib-${PGSQL_VERSION} \
