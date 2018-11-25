@@ -109,9 +109,9 @@ RUN mkdir ${USERHOME}/Nominatim/build && \
 USER nominatim
 ARG PBF_URL=https://planet.osm.org/pbf/planet-latest.osm.pbf
 RUN curl -L ${PBF_URL} --create-dirs -o /srv/nominatim/src/data.osm.pbf
-RUN curl -L http://192.168.185.160/uploads/osm/wikipedia_article.sql.bin --create-dirs -o /srv/nominatim/src/wikipedia_article.sql.bin
-RUN curl -L http://192.168.185.160/uploads/osm/wikipedia_redirect.sql.bin --create-dirs -o /srv/nominatim/src/wikipedia_redirect.sql.bin
-RUN curl -L http://192.168.185.160/uploads/osm/gb_postcode_data.sql.gz --create-dirs -o /srv/nominatim/src/gb_postcode_data.sql.gz
+RUN curl -L http://www.nominatim.org/data/wikipedia_article.sql.bin --create-dirs -o /srv/nominatim/src/wikipedia_article.sql.bin
+RUN curl -L http://www.nominatim.org/data/wikipedia_redirect.sql.bin --create-dirs -o /srv/nominatim/src/wikipedia_redirect.sql.bin
+RUN curl -L http://www.nominatim.org/data/gb_postcode_data.sql.gz --create-dirs -o /srv/nominatim/src/gb_postcode_data.sql.gz
 
 # Filter administrative boundaries
 USER nominatim
