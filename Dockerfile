@@ -136,8 +136,8 @@ RUN IMPORT_CONFIG_URL="${PGCONFIG_URL}? \
       environment_name=DW& \
       include_pgbadger=false" && \
     IMPORT_CONFIG_URL=${IMPORT_CONFIG_URL// /} && \
-    echo $IMPORT_CONFIG_URL && \
-    service postgresql start && \
+    echo $IMPORT_CONFIG_URL
+RUN service postgresql start && \
     ( curl -sSL "${IMPORT_CONFIG_URL}"; \
       echo $'ALTER SYSTEM SET fsync TO \'off\';\n'; \
       echo $'ALTER SYSTEM SET full_page_writes TO \'off\';\n'; \
