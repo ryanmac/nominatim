@@ -111,7 +111,7 @@ RUN mkdir ${USERHOME}/src/ && \
 USER nominatim
 ARG PBF_PATH=planet-latest.osm.pbf
 
-COPY data/${PBF_PATH} /srv/nominatim/src/data.osm.pbf
+COPY data/${PBF_PATH} ${USERHOME}/src/data.osm.pbf
 
 COPY data/wikipedia_article.sql.bin ${USERHOME}/src/wikipedia_article.sql.bin
 COPY data/wikipedia_redirect.sql.bin ${USERHOME}/src/wikipedia_redirect.sql.bin
