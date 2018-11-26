@@ -110,10 +110,10 @@ RUN mkdir ${USERHOME}/src/ && \
 # Local
 USER nominatim
 ARG PBF_PATH=planet-latest.osm.pbf
-COPY data/${PBF_PATH} /srv/nominatim/src/data.osm.pbf
-COPY data/wikipedia_article.sql.bin /srv/nominatim/src/wikipedia_article.sql.bin
-COPY data/wikipedia_redirect.sql.bin /srv/nominatim/src/wikipedia_redirect.sql.bin
-COPY data/gb_postcode_data.sql.gz /srv/nominatim/src/gb_postcode_data.sql.gz
+COPY ${USERHOME}/data/${PBF_PATH} /srv/nominatim/src/data.osm.pbf
+COPY ${USERHOME}/data/wikipedia_article.sql.bin /srv/nominatim/src/wikipedia_article.sql.bin
+COPY ${USERHOME}/data/wikipedia_redirect.sql.bin /srv/nominatim/src/wikipedia_redirect.sql.bin
+COPY ${USERHOME}/data/gb_postcode_data.sql.gz /srv/nominatim/src/gb_postcode_data.sql.gz
 
 # Download data for initial import
 # Web
