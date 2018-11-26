@@ -102,6 +102,7 @@ RUN wget -O Nominatim/data/country_osm_grid.sql.gz \
       http://www.nominatim.org/data/country_grid.sql.gz
 RUN mkdir ${USERHOME}/src/ && \
     mkdir ${USERHOME}/Nominatim/build && \
+    mkdir ${USERHOME}/Nominatim/data && \
     cd ${USERHOME}/Nominatim/build && \
     cmake ${USERHOME}/Nominatim && \
     make
@@ -127,7 +128,6 @@ COPY data/gb_postcode_data.sql.gz /srv/nominatim/src/gb_postcode_data.sql.gz
 COPY /srv/nominatim/src/wikipedia_article.sql.bin ${USERHOME}/Nominatim/data/wikipedia_article.sql.bin
 COPY /srv/nominatim/src/wikipedia_redirect.sql.bin ${USERHOME}/Nominatim/data/wikipedia_redirect.sql.bin
 COPY /srv/nominatim/src/gb_postcode_data.sql.gz ${USERHOME}/Nominatim/data/gb_postcode_data.sql.gz
-
 
 
 # Filter administrative boundaries
