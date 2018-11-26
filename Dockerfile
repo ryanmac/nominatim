@@ -100,7 +100,8 @@ RUN echo $'<?php\n\
     > ./Nominatim/settings/local.php
 RUN wget -O Nominatim/data/country_osm_grid.sql.gz \
       http://www.nominatim.org/data/country_grid.sql.gz
-RUN mkdir ${USERHOME}/Nominatim/build && \
+RUN mkdir ${USERHOME}/src/ && \
+    mkdir ${USERHOME}/Nominatim/build && \
     cd ${USERHOME}/Nominatim/build && \
     cmake ${USERHOME}/Nominatim && \
     make
