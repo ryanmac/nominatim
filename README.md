@@ -13,13 +13,26 @@ The build process is fairly straightforward, but requires lots of computer resou
 
 To build, install [Docker](https://get.docker.com) and run following command:
 ```shell
-docker build github.com/merlinnot/nominatim-docker \
+docker build github.com/ryanmac/nominatim \
   -t nominatim \
   --build-arg BUILD_THREADS=16 \
-  --build-arg BUILD_MEMORY=32GB \
+  --build-arg BUILD_MEMORY=48GB \
   --build-arg OSM2PGSQL_CACHE=28000 \
   --build-arg RUNTIME_THREADS=2 \
-  --build-arg RUNTIME_MEMORY=8GB
+  --build-arg RUNTIME_MEMORY=8GB \
+  --shm-size=2g
+  
+OR
+
+git pull
+docker build . \
+  -t nominatim \
+  --build-arg BUILD_THREADS=16 \
+  --build-arg BUILD_MEMORY=48GB \
+  --build-arg OSM2PGSQL_CACHE=28000 \
+  --build-arg RUNTIME_THREADS=2 \
+  --build-arg RUNTIME_MEMORY=8GB \
+  --shm-size=2g
 ```
 
 Full list of build arguments:
@@ -41,6 +54,9 @@ Full list of build arguments:
 To run container built in the [previous step](#build) use
 ```bash
 docker run --restart=always -d -p 80:80 merlinnot/nominatim-docker
+
+# OR
+docker run --restart=always -d -p 80:80 [CONTAINER_ID]
 ```
 API will be available at port `80` under `/nominatim/` directory.
 
@@ -49,13 +65,14 @@ This project uses [Devver](https://github.com/merlinnot/devver), but feel free t
 
 For development purposes I strongly encourage to start a build process using URLs for Monacco, it makes the process much faster:
 ```shell
-docker build github.com/merlinnot/nominatim-docker \
+docker build . \
   -t nominatim \
-  --build-arg BUILD_THREADS=2 \
-  --build-arg BUILD_MEMORY=8GB \
-  --build-arg OSM2PGSQL_CACHE=2000 \
+  --build-arg BUILD_THREADS=16 \
+  --build-arg BUILD_MEMORY=48GB \
+  --build-arg OSM2PGSQL_CACHE=28000 \
   --build-arg RUNTIME_THREADS=2 \
   --build-arg RUNTIME_MEMORY=8GB \
-  --build-arg PBF_URL=http://download.geofabrik.de/europe/monaco-latest.osm.pbf \
+  --build-arg PBF_PATH=monaco-latest.osm.pbf \
   --build-arg REPLICATION_URL=http://download.geofabrik.de/monaco-updates
+  --shm-size=2g
 ```
