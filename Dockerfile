@@ -110,10 +110,16 @@ RUN mkdir ${USERHOME}/src/ && \
 # Local
 USER nominatim
 ARG PBF_PATH=planet-latest.osm.pbf
+
 COPY data/${PBF_PATH} /srv/nominatim/src/data.osm.pbf
+
 COPY data/wikipedia_article.sql.bin ${USERHOME}/src/wikipedia_article.sql.bin
 COPY data/wikipedia_redirect.sql.bin ${USERHOME}/src/wikipedia_redirect.sql.bin
 COPY data/gb_postcode_data.sql.gz ${USERHOME}/src/gb_postcode_data.sql.gz
+
+COPY data/wikipedia_article.sql.bin ${USERHOME}/Nominatim/data/wikipedia_article.sql.bin
+COPY data/wikipedia_redirect.sql.bin ${USERHOME}/Nominatim/data/wikipedia_redirect.sql.bin
+COPY data/gb_postcode_data.sql.gz ${USERHOME}/Nominatim/data/gb_postcode_data.sql.gz
 
 # Download data for initial import
 # Web
@@ -124,9 +130,6 @@ COPY data/gb_postcode_data.sql.gz ${USERHOME}/src/gb_postcode_data.sql.gz
 # RUN curl -L http://www.nominatim.org/data/wikipedia_redirect.sql.bin --create-dirs -o /srv/nominatim/src/wikipedia_redirect.sql.bin
 # RUN curl -L http://www.nominatim.org/data/gb_postcode_data.sql.gz --create-dirs -o /srv/nominatim/src/gb_postcode_data.sql.gz
 
-COPY ${USERHOME}/src/wikipedia_article.sql.bin ${USERHOME}/Nominatim/data/wikipedia_article.sql.bin
-COPY ${USERHOME}/src/wikipedia_redirect.sql.bin ${USERHOME}/Nominatim/data/wikipedia_redirect.sql.bin
-COPY ${USERHOME}/src/gb_postcode_data.sql.gz ${USERHOME}/Nominatim/data/gb_postcode_data.sql.gz
 
 
 # Filter administrative boundaries
