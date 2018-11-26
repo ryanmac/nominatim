@@ -102,7 +102,6 @@ RUN wget -O Nominatim/data/country_osm_grid.sql.gz \
       http://www.nominatim.org/data/country_grid.sql.gz
 RUN mkdir ${USERHOME}/src/ && \
     mkdir ${USERHOME}/Nominatim/build && \
-    mkdir ${USERHOME}/Nominatim/data && \
     cd ${USERHOME}/Nominatim/build && \
     cmake ${USERHOME}/Nominatim && \
     make
