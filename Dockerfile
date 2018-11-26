@@ -112,6 +112,9 @@ RUN curl -L ${PBF_URL} --create-dirs -o /srv/nominatim/src/data.osm.pbf
 RUN curl -L http://www.nominatim.org/data/wikipedia_article.sql.bin --create-dirs -o /srv/nominatim/src/wikipedia_article.sql.bin
 RUN curl -L http://www.nominatim.org/data/wikipedia_redirect.sql.bin --create-dirs -o /srv/nominatim/src/wikipedia_redirect.sql.bin
 RUN curl -L http://www.nominatim.org/data/gb_postcode_data.sql.gz --create-dirs -o /srv/nominatim/src/gb_postcode_data.sql.gz
+COPY /srv/nominatim/src/wikipedia_article.sql.bin ${USERHOME}/Nominatim/data/wikipedia_article.sql.bin
+COPY /srv/nominatim/src/wikipedia_redirect.sql.bin ${USERHOME}/Nominatim/data/wikipedia_redirect.sql.bin
+COPY /srv/nominatim/src/gb_postcode_data.sql.gz ${USERHOME}/Nominatim/data/gb_postcode_data.sql.gz
 
 # Filter administrative boundaries
 USER nominatim
