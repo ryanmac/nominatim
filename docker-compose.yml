@@ -20,3 +20,6 @@ services:
     ulimits:
       nproc: 65535
       nofile: 524288
+build:
+  context: .
+  shm_size: '1gb'
